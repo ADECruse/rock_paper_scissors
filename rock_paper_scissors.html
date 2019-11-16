@@ -16,18 +16,25 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         
-        <script src="" async defer>
+        <script>
             function computerPlay() {
-
+                min = Math.ceil(0);
+                max = Math.floor(2);
+                return Math.floor(Math.random() * (max - min + 1)) + min;
             }
 
             function playRound(playerSelection, computerSelection) {
-                
+
+                return 
             }
 
             const playerSelection = 'rock';
             const computerSelection = computerPlay();
             console.log(playRound(playerSelection, computerSelection))
+
+            function game() {
+
+            }
         </script>
     </body>
 </html>
