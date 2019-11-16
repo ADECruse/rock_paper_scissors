@@ -33,22 +33,32 @@
             }
 
             function playRound(playerSelection, computerSelection) {
-                
-                if (playerSelection === computerSelection) {
-                    return 'Draw!';
-                } else if (playerSelection > computerSelection && playerSelection != 3) {
+                console.log('Computer ' + computerSelection);
+                let player = playerSelection.toLowerCase();
+                const moves = new Map([['rock',1],['scissors', 2],['paper', 3]]);
+                let playerMove = moves.get(player);
+                console.log('Player ' + playerMove);
+                if (playerMove < computerSelection) {
+                    if (playerMove === 1 && computerSelection === 3) {
+                        return 'win!'
+                    } else {
+                        return 'Draw!';
+                    }
+                } else if (playerMove > computerSelection) {
+                    if (playerMove === 3 && computerSelection === 1) {
+                        return 'lose!'
+                    } else {
                         return 'win!';
-                } else if (playerSelection < computerSelection && playerSelection === 1) {
-                        return 'win!';
+                    }
+                // } else if (playerMove < computerSelection && playerMove + computerSelection === 4) {
+                //         return 'win!';
                 } else {
-                    return 'lose!';
-                }
-                    
-                
+                    return 'draw!';
+                }                
             }
 
-            const playerSelection = 2;
-            const computerSelection = 1;
+            const playerSelection = 'paper';
+            const computerSelection = computerPlay();
             // console.log(playRound(playerSelection, computerSelection))
 
             function game() {
