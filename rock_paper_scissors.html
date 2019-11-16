@@ -18,8 +18,8 @@
         
         <script>
             function computerPlay() {
-               const min = Math.ceil(0);
-               const max = Math.floor(2);
+               const min = Math.ceil(1);
+               const max = Math.floor(3);
                let result = Math.floor(Math.random() * (max - min + 1)) + min;
                 if (result === 1) {
                     return 'paper';
@@ -32,8 +32,17 @@
             }
 
             function playRound(playerSelection, computerSelection) {
-                
 
+                if (playerSelection === computerSelection) {
+                    return 'Draw!'
+                } else {
+                    let sum = playerSelection + computerSelection;
+                    let minus = sum - computerSelection;
+                    if (minus === computerSelection) {
+                        return 'win!'
+                } else {
+                    return 'lose!'
+                }
                 return 
             }
 
