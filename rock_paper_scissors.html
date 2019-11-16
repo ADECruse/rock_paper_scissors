@@ -21,45 +21,49 @@
                const min = Math.ceil(1);
                const max = Math.floor(3);
                let result = Math.floor(Math.random() * (max - min + 1)) + min;
-               return result
-                // if (result === 1) {
-                //     return 'paper';
-                // } else if (result > 1) {
-                //     return 'scissors';
-                // } else {
-                //     return 'rock';
-                // };
+
+               switch (result) {
+                   case 1:
+                       return 'rock'
+                       break;
+                   case 2:
+                        return 'paper'
+                       break;
+                   default:
+                       return 'scissors'
+                       break;
+               }
+
                 
             }
 
             function playRound(playerSelection, computerSelection) {
                 console.log('Computer ' + computerSelection);
-                let player = playerSelection.toLowerCase();
-                const moves = new Map([['rock',1],['scissors', 2],['paper', 3]]);
-                let playerMove = moves.get(player);
-                console.log('Player ' + playerMove);
-                if (playerMove < computerSelection) {
-                    if (playerMove === 1 && computerSelection === 3) {
-                        return 'win!'
+                // let player = playerSelection.toLowerCase();
+                const moves = new Map([['rock',1],['paper', 2],['scissors', 3]]);
+                let playerMove = moves.get(playerSelection.toLowerCase());
+                let computerMove = moves.get(computerSelection);
+                console.log('Player ' + playerSelection);
+                if (playerMove < computerMove) {
+                    if (playerMove === 1 && computerMove === 3) {
+                        return "You Win! " + playerSelection + " beats " + computerSelection;
                     } else {
-                        return 'Draw!';
+                        return "You Lose! " + computerSelection + " beats " + playerSelection;
                     }
-                } else if (playerMove > computerSelection) {
-                    if (playerMove === 3 && computerSelection === 1) {
-                        return 'lose!'
+                } else if (playerMove > computerMove) {
+                    if (playerMove === 3 && computerMove === 1) {
+                        return "You Lose! " + computerSelection + " beats " + playerSelection;
                     } else {
-                        return 'win!';
+                        return "You Win! " + playerSelection + " beats " + computerSelection;
                     }
-                // } else if (playerMove < computerSelection && playerMove + computerSelection === 4) {
-                //         return 'win!';
                 } else {
                     return 'draw!';
                 }                
             }
 
-            const playerSelection = 'paper';
+            const playerSelection = 'rock';
             const computerSelection = computerPlay();
-            // console.log(playRound(playerSelection, computerSelection))
+            console.log(playRound(playerSelection, computerSelection))
 
             function game() {
 
