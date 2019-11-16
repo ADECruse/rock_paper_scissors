@@ -18,12 +18,21 @@
         
         <script>
             function computerPlay() {
-                min = Math.ceil(0);
-                max = Math.floor(2);
-                return Math.floor(Math.random() * (max - min + 1)) + min;
+               const min = Math.ceil(0);
+               const max = Math.floor(2);
+               let result = Math.floor(Math.random() * (max - min + 1)) + min;
+                if (result === 1) {
+                    return 'paper';
+                } else if (result > 1) {
+                    return 'scissors';
+                } else {
+                    return 'rock';
+                };
+                
             }
 
             function playRound(playerSelection, computerSelection) {
+                
 
                 return 
             }
