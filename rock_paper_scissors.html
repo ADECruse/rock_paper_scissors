@@ -37,36 +37,59 @@
                 
             }
 
+            let playerWins = 0;
+            let computerWins = 0;
+            let roundResultMessage = '';
             function playRound(playerSelection, computerSelection) {
-                console.log('Computer ' + computerSelection);
-                // let player = playerSelection.toLowerCase();
+                console.log('Computer\'s choice: ' + computerSelection);
                 const moves = new Map([['rock',1],['paper', 2],['scissors', 3]]);
                 let playerMove = moves.get(playerSelection.toLowerCase());
                 let computerMove = moves.get(computerSelection);
-                console.log('Player ' + playerSelection);
+                console.log('Player\'s choice: ' + playerSelection);
                 if (playerMove < computerMove) {
                     if (playerMove === 1 && computerMove === 3) {
-                        return "You Win! " + playerSelection + " beats " + computerSelection;
+                        playerWins++;
+                        roundResultMessage = "You Win! " + playerSelection + " beats " + computerSelection;
                     } else {
-                        return "You Lose! " + computerSelection + " beats " + playerSelection;
+                        computerWins++
+                        roundResultMessage = "You Lose! " + computerSelection + " beats " + playerSelection;
                     }
                 } else if (playerMove > computerMove) {
                     if (playerMove === 3 && computerMove === 1) {
-                        return "You Lose! " + computerSelection + " beats " + playerSelection;
+                        computerWins++
+                        roundResultMessage = "You Lose! " + computerSelection + " beats " + playerSelection;
                     } else {
-                        return "You Win! " + playerSelection + " beats " + computerSelection;
+                        playerWins++
+                        roundResultMessage = "You Win! " + playerSelection + " beats " + computerSelection;
                     }
                 } else {
-                    return 'draw!';
+                    roundResultMessage = 'Draw!';
                 }                
             }
 
-            const playerSelection = 'rock';
-            const computerSelection = computerPlay();
-            console.log(playRound(playerSelection, computerSelection))
-
+            let playerSelection = 'rock';
+            let computerSelection = computerPlay();
             function game() {
+                // for (let index = 0; index < 5; index++) {
+                // }
                 
+                while (playerWins < 3 && computerWins < 3) {
+                    playerSelection = window.prompt('Enter move');
+                    computerSelection = computerPlay();
+                    playRound(playerSelection, computerSelection);
+                    console.log(roundResultMessage);
+                    console.log('Player: '+ playerWins + ' ' + 'Computer: ' + computerWins);
+                    if (playerWins >= 3) {
+                        return 'You won, computer lost best out of 5!'
+                        break;
+                    } else if (computerPlay >=3) {
+                        return 'You lose, computer won best out of 5!'
+                        break;
+                    } else {
+                        continue;
+                    }        
+        
+                }
             }
         </script>
     </body>
