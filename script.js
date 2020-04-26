@@ -70,3 +70,18 @@ function game() {
         }        
     }
 }
+
+
+// HTML buttons
+const playerButtonSelect = document.querySelectorAll('button');
+
+console.log(playerButtonSelect);
+
+playerButtonSelect.forEach((button) => {
+    console.log(button)
+    button.addEventListener('click', (e) => {
+        playerSelection = e.target.id
+        console.log(e.target.id);
+        // Call playRound here
+    });
+})
