@@ -51,6 +51,7 @@ function playRound(playerSelection, computerSelection) {
 
 let playerSelection = 'rock';
 let computerSelection = computerPlay();
+let gameIsWon = 'false';
 // function game() {
 //     // logic that plays a best of out 5 game
 //     while (playerWins < 3 && computerWins < 3) {
@@ -72,7 +73,12 @@ let computerSelection = computerPlay();
 // }
 const resultsDiv = document.getElementById('results');
 const roundResultMessageDiv = document.createElement('div');
+const gameResultMessageDiv = document.createElement('div');
 function game() {
+    if (gameIsWon === true) {
+        playerWins = 0;
+        computerWins = 0;
+    }
     computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
     console.log(roundResultMessage);
@@ -80,6 +86,16 @@ function game() {
     console.log('Player: '+ playerWins + ' ' + 'Computer: ' + computerWins);
     resultsDiv.textContent = 'Player: '+ playerWins + ' ' + 'Computer: ' + computerWins;
     resultsDiv.appendChild(roundResultMessageDiv);
+    if (playerWins === 5) {
+        gameResultMessageDiv.textContent = 'You won, computer lost best out of 5!'
+        resultsDiv.appendChild(gameResultMessageDiv);
+        gameIsWon = true;
+    } else if (computerWins === 5) {
+        gameResultMessageDiv.textContent = 'You lose, computer won best out of 5!'
+        resultsDiv.appendChild(gameResultMessageDiv);
+        gameIsWon = true;
+    } else {
+    }        
 }
 
 // HTML buttons
