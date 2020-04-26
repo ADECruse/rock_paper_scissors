@@ -21,7 +21,7 @@ let playerWins = 0; // keeps count of rounds won by the player
 let computerWins = 0; // keeps count of rounds won by the computer
 let roundResultMessage = ''; // holds the message to return after a round is played
 function playRound(playerSelection, computerSelection) {
-    // map array of a move (key) and its corresponindg number (value)
+    // map array of a move (key) and its corresponding number (value)
     const moves = new Map([['rock',1],['paper', 2],['scissors', 3]]);
     let playerMove = moves.get(playerSelection.toLowerCase());
     let computerMove = moves.get(computerSelection);
@@ -51,26 +51,31 @@ function playRound(playerSelection, computerSelection) {
 
 let playerSelection = 'rock';
 let computerSelection = computerPlay();
+// function game() {
+//     // logic that plays a best of out 5 game
+//     while (playerWins < 3 && computerWins < 3) {
+//         playerSelection = window.prompt('Enter move');
+//         computerSelection = computerPlay();
+//         playRound(playerSelection, computerSelection);
+//         console.log(roundResultMessage);
+//         console.log('Player: '+ playerWins + ' ' + 'Computer: ' + computerWins);
+//         if (playerWins >= 3) {
+//             return 'You won, computer lost best out of 5!'
+//             break;
+//         } else if (computerPlay >=3) {
+//             return 'You lose, computer won best out of 5!'
+//             break;
+//         } else {
+//             continue;
+//         }        
+//     }
+// }
 function game() {
-    // logic that plays a best of out 5 game
-    while (playerWins < 3 && computerWins < 3) {
-        playerSelection = window.prompt('Enter move');
-        computerSelection = computerPlay();
-        playRound(playerSelection, computerSelection);
-        console.log(roundResultMessage);
-        console.log('Player: '+ playerWins + ' ' + 'Computer: ' + computerWins);
-        if (playerWins >= 3) {
-            return 'You won, computer lost best out of 5!'
-            break;
-        } else if (computerPlay >=3) {
-            return 'You lose, computer won best out of 5!'
-            break;
-        } else {
-            continue;
-        }        
-    }
+    computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    console.log(roundResultMessage);
+    console.log('Player: '+ playerWins + ' ' + 'Computer: ' + computerWins);
 }
-
 
 // HTML buttons
 const playerButtonSelect = document.querySelectorAll('button');
@@ -83,5 +88,6 @@ playerButtonSelect.forEach((button) => {
         playerSelection = e.target.id
         console.log(e.target.id);
         // Call playRound here
+        game()
     });
 })
