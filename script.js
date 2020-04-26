@@ -70,11 +70,16 @@ let computerSelection = computerPlay();
 //         }        
 //     }
 // }
+const resultsDiv = document.getElementById('results');
+const roundResultMessageDiv = document.createElement('div');
 function game() {
     computerSelection = computerPlay();
     playRound(playerSelection, computerSelection);
     console.log(roundResultMessage);
+    roundResultMessageDiv.textContent = roundResultMessage;
     console.log('Player: '+ playerWins + ' ' + 'Computer: ' + computerWins);
+    resultsDiv.textContent = 'Player: '+ playerWins + ' ' + 'Computer: ' + computerWins;
+    resultsDiv.appendChild(roundResultMessageDiv);
 }
 
 // HTML buttons
@@ -91,3 +96,6 @@ playerButtonSelect.forEach((button) => {
         game()
     });
 })
+
+//Score logging
+
